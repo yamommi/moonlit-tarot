@@ -140,3 +140,24 @@ footer {
   background: #050009;
   color: #bcaee8;
 }
+
+.clarification-area {
+  width: 100%;
+  margin-top: 25px;
+  padding: 20px;
+  border-top: 1px solid #ffd77a66;
+}
+
+.clarification-area h4 {
+  color: #ffd77a;
+  margin-bottom: 10px;
+}
+
+.clarification-select {
+  padding: 12px;
+  border-radius: 20px;
+  border: 1px solid #ffd77a;
+  background: #16041f;
+  color: #f8e9c7;
+  margin: 10px;
+}
