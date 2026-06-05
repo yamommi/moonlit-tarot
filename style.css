@@ -1,1 +1,142 @@
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #090212;
+  color: #f8e9c7;
+}
 
+.hero {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #4c1d78, #090212 70%);
+  padding: 25px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  color: #ffd77a;
+}
+
+nav a {
+  color: #f8e9c7;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.hero-content {
+  text-align: center;
+  margin-top: 160px;
+}
+
+.hero-content h2 {
+  font-size: 3rem;
+  color: #ffd77a;
+}
+
+.btn, button {
+  background: linear-gradient(135deg, #ffd77a, #b46cff);
+  color: #16041f;
+  padding: 13px 25px;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+section {
+  padding: 60px 25px;
+  text-align: center;
+}
+
+.dark-section {
+  background: rgba(255,255,255,0.06);
+}
+
+.reading-grid, .learn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.reading-card, .learn-grid div {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid #ffd77a66;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 0 25px rgba(255,215,122,.12);
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.tarot-card {
+  width: 130px;
+  height: 210px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform .8s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.tarot-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.card-front {
+  background: linear-gradient(145deg, #1c0638, #5a2399);
+  border: 2px solid #ffd77a;
+  color: #ffd77a;
+}
+
+.card-back {
+  background: linear-gradient(145deg, #fff1c9, #c99b42);
+  color: #1c0638;
+  transform: rotateY(180deg);
+  flex-direction: column;
+  font-size: .85rem;
+}
+
+.label {
+  color: #d9c7ff;
+  margin-top: 8px;
+  font-size: .9rem;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #050009;
+  color: #bcaee8;
+}
