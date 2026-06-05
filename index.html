@@ -325,3 +325,107 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moonlit Tarot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="hero">
+  <nav>
+    <h1>Moonlit Tarot</h1>
+    <div>
+      <a href="#readings">Readings</a>
+      <a href="#daily">Daily Card</a>
+      <a href="#learn">Learn Tarot</a>
+      <a href="#book">Book</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <h2>Find the message waiting in the cards</h2>
+    <p>Choose a tarot spread, draw your cards, and reveal your guidance.</p>
+    <a class="btn" href="#readings">Start Reading</a>
+  </div>
+</header>
+
+<section id="readings">
+  <h2>Choose Your Reading</h2>
+
+  <div class="reading-grid">
+    <div class="reading-card">
+      <h3>One Card Reading</h3>
+      <p>A quick message for your current energy.</p>
+      <button onclick="drawReading('one', ['Your Message'])">Draw Card</button>
+      <div class="cards" id="one"></div>
+    </div>
+
+    <div class="reading-card">
+      <h3>Past, Present, Future</h3>
+      <p>See where you have been, where you are, and what may come next.</p>
+      <button onclick="drawReading('three', ['Past', 'Present', 'Future'])">Draw 3 Cards</button>
+      <div class="cards" id="three"></div>
+    </div>
+
+    <div class="reading-card">
+      <h3>Love Reading</h3>
+      <p>Look into feelings, connection, challenges, and advice.</p>
+      <button onclick="drawReading('love', ['Your Heart', 'Their Energy', 'Connection', 'Advice'])">Draw Love Reading</button>
+      <div class="cards" id="love"></div>
+    </div>
+
+    <div class="reading-card">
+      <h3>Career & Money</h3>
+      <p>Guidance for work, money, opportunity, and next steps.</p>
+      <button onclick="drawReading('career', ['Current Energy', 'Challenge', 'Opportunity', 'Advice'])">Draw Career Reading</button>
+      <div class="cards" id="career"></div>
+    </div>
+  </div>
+</section>
+
+<section id="daily" class="dark-section">
+  <h2>Daily Tarot Card</h2>
+  <p>Pull one card for today’s energy.</p>
+  <button onclick="drawReading('dailyCard', ['Today’s Message'])">Draw Daily Card</button>
+  <div class="cards" id="dailyCard"></div>
+</section>
+
+<section id="learn">
+  <h2>Learn Tarot</h2>
+  <div class="learn-grid">
+    <div>
+      <h3>Major Arcana</h3>
+      <p>Big life lessons, spiritual growth, turning points, and soul lessons.</p>
+    </div>
+    <div>
+      <h3>Cups</h3>
+      <p>Love, feelings, emotions, intuition, and relationships.</p>
+    </div>
+    <div>
+      <h3>Wands</h3>
+      <p>Passion, creativity, energy, movement, and ambition.</p>
+    </div>
+    <div>
+      <h3>Swords</h3>
+      <p>Thoughts, truth, conflict, decisions, and communication.</p>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="dark-section">
+  <h2>Book a Personal Reading</h2>
+  <p>Need a deeper reading? Contact me for love, career, life path, or custom tarot guidance.</p>
+  <a class="btn" href="mailto:your-email@example.com">Request a Reading</a>
+</section>
+
+<footer>
+  <p>© 2026 Moonlit Tarot | For entertainment and reflection purposes only.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
