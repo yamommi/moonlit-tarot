@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moonlit Tarot Readings</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+      background: radial-gradient(circle at top, #2d1457, #09020f 70%);
+      color: #f8e9c7;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.8));
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #ffd77a;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #e6d6ff;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffd77a;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .section-text {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      color: #d9c7ff;
+    }
+
+    .reading-box {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,215,122,.4);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 0 30px rgba(255,215,122,.12);
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .tarot-card {
+      width: 180px;
+      height: 280px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform .8s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .tarot-card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 15px;
+      box-sizing: border-box;
+      box-shadow: 0 10px 25px rgba(0,0,0,.5);
+    }
+
+    .card-front {
+      background: linear-gradient(145deg, #1c0638, #4e1d83);
+      border: 2px solid #ffd77a;
+      color: #ffd77a;
+      font-size: 1.4rem;
+    }
+
+    .card-back {
+      background: linear-gradient(145deg, #fff1c9, #c99b42);
+      color: #1c0638;
+      transform: rotateY(180deg);
+      flex-direction: column;
+      font-size: .95rem;
+    }
+
+    .card-back h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .position-label {
+      margin-top: 10px;
+      text-align: center;
+      color: #e6d6ff;
+      font-size: .95rem;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 13px 28px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #ffd77a, #b875ff);
+      color: #16041f;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,.4);
+    }
+
+    button:hover {
+      transform: scale(1.04);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #bcaee8;
+      background: rgba(0,0,0,.5);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Moonlit Tarot Readings</h1>
+    <p>Choose a reading, draw your cards, and reveal the message waiting for you.</p>
+  </header>
+
+  <section>
+    <div class="reading-box">
+      <h2>One Card Reading</h2>
+      <p class="section-text">A quick message for your current energy, question, or situation.</p>
+      <button onclick="drawReading('oneCard', ['Your Message'])">Draw One Card</button>
+      <div class="cards" id="oneCard"></div>
+    </div>
+
+    <div class="reading-box">
+      <h2>Past, Present, Future</h2>
+      <p class="section-text">A simple three-card spread showing where you’ve been, where you are, and what may be ahead.</p>
+      <button onclick="drawReading('threeCard', ['Past', 'Present', 'Future'])">Draw 3 Cards</button>
+      <div class="cards" id="threeCard"></div>
+    </div>
+
+    <div class="reading-box">
+      <h2>Love Reading</h2>
+      <p class="section-text">Look into emotional energy, connection, challenges, and possible direction in love.</p>
+      <button onclick="drawReading('loveReading', ['Your Heart', 'Their Energy', 'The Connection', 'Advice'])">Draw Love Reading</button>
+      <div class="cards" id="loveReading"></div>
+    </div>
+
+    <div class="reading-box">
+      <h2>Career & Money Reading</h2>
+      <p class="section-text">A spread for work, finances, opportunities, and next steps.</p>
+      <button onclick="drawReading('careerReading', ['Current Energy', 'Challenge', 'Opportunity', 'Advice'])">Draw Career Reading</button>
+      <div class="cards" id="careerReading"></div>
+    </div>
+
+    <div class="reading-box">
+      <h2>Deep Guidance Reading</h2>
+      <p class="section-text">A more detailed reading for clarity, hidden influences, lessons, and guidance.</p>
+      <button onclick="drawReading('deepReading', ['Situation', 'Hidden Truth', 'Challenge', 'Lesson', 'Outcome'])">Draw Deep Reading</button>
+      <div class="cards" id="deepReading"></div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Moonlit Tarot | For reflection and entertainment purposes
+  </footer>
+
+  <script>
+    const tarotCards = [
+      {
+        name: "The Fool",
+        meaning: "New beginnings, freedom, taking a leap of faith."
+      },
+      {
+        name: "The Magician",
+        meaning: "Power, manifestation, using your skills wisely."
+      },
+      {
+        name: "The High Priestess",
+        meaning: "Intuition, hidden knowledge, trusting your inner voice."
+      },
+      {
+        name: "The Empress",
+        meaning: "Growth, beauty, nurturing, abundance."
+      },
+      {
+        name: "The Emperor",
+        meaning: "Structure, leadership, protection, stability."
+      },
+      {
+        name: "The Lovers",
+        meaning: "Connection, choices, relationships, alignment."
+      },
+      {
+        name: "The Chariot",
+        meaning: "Determination, control, victory through focus."
+      },
+      {
+        name: "Strength",
+        meaning: "Courage, patience, inner power, compassion."
+      },
+      {
+        name: "The Hermit",
+        meaning: "Reflection, solitude, wisdom, searching within."
+      },
+      {
+        name: "Wheel of Fortune",
+        meaning: "Change, cycles, fate, unexpected movement."
+      },
+      {
+        name: "Justice",
+        meaning: "Truth, fairness, decisions, consequences."
+      },
+      {
+        name: "The Hanged Man",
+        meaning: "Pause, surrender, seeing things differently."
+      },
+      {
+        name: "Death",
+        meaning: "Transformation, endings, release, rebirth."
+      },
+      {
+        name: "Temperance",
+        meaning: "Balance, healing, patience, moderation."
+      },
+      {
+        name: "The Devil",
+        meaning: "Attachment, temptation, unhealthy patterns."
+      },
+      {
+        name: "The Tower",
+        meaning: "Sudden change, truth revealed, breaking illusions."
+      },
+      {
+        name: "The Star",
+        meaning: "Hope, renewal, faith, peace after difficulty."
+      },
+      {
+        name: "The Moon",
+        meaning: "Confusion, dreams, intuition, hidden feelings."
+      },
+      {
+        name: "The Sun",
+        meaning: "Joy, success, clarity, warmth, happiness."
+      },
+      {
+        name: "Judgement",
+        meaning: "Awakening, reflection, second chances."
+      },
+      {
+        name: "The World",
+        meaning: "Completion, success, fulfillment, a full circle moment."
+      }
+    ];
+
+    function drawReading(sectionId, positions) {
+      const container = document.getElementById(sectionId);
+      container.innerHTML = "";
+
+      let shuffled = [...tarotCards].sort(() => Math.random() - 0.5);
+
+      positions.forEach((position, index) => {
+        const card = shuffled[index];
+
+        const wrapper = document.createElement("div");
+
+        wrapper.innerHTML = `
+          <div class="tarot-card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+              <div class="card-front">
+                ✦ Tarot ✦
+              </div>
+              <div class="card-back">
+                <h3>${card.name}</h3>
+                <p>${card.meaning}</p>
+              </div>
+            </div>
+          </div>
+          <div class="position-label">${position}</div>
+        `;
+
+        container.appendChild(wrapper);
+      });
+    }
+  </script>
+
+</body>
+</html>
