@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Tarot Card</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<header class="hero">
+  <h1>✨ Daily Tarot Card</h1>
+  <p>Pull a single card to discover today's energy and guidance.</p>
+  <a class="btn" href="index.html">← Back Home</a>
+</header>
+
+<section>
+
+  <button onclick="drawReading('dailyReading', ['Today\\'s Message'])">
+    Reveal Today's Card
+  </button>
+
+  <div id="dailyReading" class="cards"></div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
